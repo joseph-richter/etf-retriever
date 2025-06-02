@@ -9,8 +9,8 @@ import (
 	"github.com/PuerkitoBio/goquery"
 )
 
-func webContentGet(link string) float32 {
-	res, err := http.Get(link)
+func webContentGet(url string) float32 {
+	res, err := http.Get(url)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -27,7 +27,7 @@ func webContentGet(link string) float32 {
 
 	var yieldToWorst float32
 
-	if strings.Contains(link, "blackrock") {
+	if strings.Contains(url, "blackrock") {
 		doc.Find(".product-data-item.col-yieldToWorst").Each(func(i int, s *goquery.Selection) {
 			valueNotFormatted := strings.Fields(s.Text())
 
